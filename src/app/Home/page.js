@@ -11,7 +11,8 @@ export default function Page() {
         <Canvas />
       </div>
       <div className="relative border-t-2 z-10 border-t-zinc-500 justify-center text-center w-full h-screen flex flex-col items-center">
-      {/* <Link href={'#'}><h1 className='text-9xl font-bold'></h1></Link> */}
+      <Link href={'Game'}><h1 className='text-7xl font-bold'>Click Here To Start The Game</h1></Link>
+      
       </div>
     </div>
   );

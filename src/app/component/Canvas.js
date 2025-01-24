@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
 
-export const Canvas = () => {
+export default function Canvas () {
     const mountRef = useRef(null);
 
     useEffect(() => {
