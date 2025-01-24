@@ -4,7 +4,6 @@ import React from 'react'
 import LocomotiveScroll from 'locomotive-scroll';
 import Cursor from './component/Cursor';
 import Home from './Home/page';
-import Event from './Event/page';
 import { Navbar } from './component/Navbar';
 export default function page () {
   const locomotiveScroll = new LocomotiveScroll();
@@ -18,7 +17,6 @@ export default function page () {
         <Home/>
         </div>
         <div className='relative'>
-        <Event/>
         </div>
       </div>
     </div>

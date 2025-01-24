@@ -42,7 +42,7 @@ const PunchTheCupGame = () => {
     // Improved cup design with inverted shape
     const cupGeometry = new THREE.CylinderGeometry(1.5, 1, 2.5, 64, 1, true);
     const cupMaterial = new THREE.MeshStandardMaterial({
-      color: "#FF5733",
+      color: "#99b0f5",
       metalness: 0.6,
       roughness: 0.3,
       side: THREE.DoubleSide,
