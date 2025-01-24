@@ -17,7 +17,6 @@ export default function page () {
         <Home/>
         </div>
         <div className='relative'>
-        <Event/>
         </div>
       </div>
     </div>
