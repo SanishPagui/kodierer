@@ -100,10 +100,13 @@ const PunchTheCupGame = () => {
     animate();
 
     return () => {
-      mountRef.current.removeChild(renderer.domElement);
+      if (renderer) {
+        renderer.dispose();
+      }
+      mountRef.current?.removeChild(renderer.domElement);
       window.removeEventListener("click", handleMouseClick);
-      renderer.dispose();
     };
+    
   }, [gameStarted]);
 
   useEffect(() => {
