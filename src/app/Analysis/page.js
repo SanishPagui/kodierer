@@ -28,33 +28,36 @@ const PaperCupAnalysis = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl">
-      <Navbar />
+    <div className="w-full">
       <Cursor />
-      <h2 className="text-2xl font-bold mb-4 pt-20 pl-8 text-green-700">Campus Paper Cup Reduction Analysis</h2>
-      <div className="grid grid-cols-3 gap-4 mb-6 pl-8">
-        <div className="bg-blue-50 p-4 rounded shadow-lg">
-          <h3 className="text-sm font-semibold text-green-700">Total Cups Saved</h3>
-          <p className="text-2xl font-bold">{calculatedMetrics.totalCupsSaved}</p>
+      <Navbar />
+      <div className=' max-w-5xl flex items-center justify-center flex-col h-screen'>
+        
+        <h2 className="text-2xl font-bold mb-4 pt-20 pl-8 text-green-700">Campus Paper Cup Reduction Analysis</h2>
+        <div className="grid grid-cols-3 gap-4 mb-6 pl-8">
+          <div className="bg-blue-50 p-4 rounded shadow-lg">
+            <h3 className="text-sm font-semibold text-green-700">Total Cups Saved</h3>
+            <p className="text-2xl font-bold">{calculatedMetrics.totalCupsSaved}</p>
+          </div>
+          <div className="bg-green-50 p-4 rounded shadow-lg">
+            <h3 className="text-sm font-semibold text-green-700">Carbon Reduction (kg)</h3>
+            <p className="text-2xl font-bold">{calculatedMetrics.carbonReduction}</p>
+          </div>
+          <div className="bg-purple-50 p-4 rounded shadow-lg">
+            <h3 className="text-sm font-semibold text-green-700">Progress</h3>
+            <p className="text-2xl font-bold">{calculatedMetrics.progressPercentage}%</p>
+          </div>
         </div>
-        <div className="bg-green-50 p-4 rounded shadow-lg">
-          <h3 className="text-sm font-semibold text-green-700">Carbon Reduction (kg)</h3>
-          <p className="text-2xl font-bold">{calculatedMetrics.carbonReduction}</p>
-        </div>
-        <div className="bg-purple-50 p-4 rounded shadow-lg">
-          <h3 className="text-sm font-semibold text-green-700">Progress</h3>
-          <p className="text-2xl font-bold">{calculatedMetrics.progressPercentage}%</p>
-        </div>
+        <LineChart width={600} height={300} data={analysisData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="cupsSaved" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="carbonSaved" stroke="#82ca9d" />
+        </LineChart>
       </div>
-      <LineChart width={600} height={300} data={analysisData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="cupsSaved" stroke="#8884d8" activeDot={{ r: 8 }} />
-        <Line type="monotone" dataKey="carbonSaved" stroke="#82ca9d" />
-      </LineChart>
     </div>
   );
 };

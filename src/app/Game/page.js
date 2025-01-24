@@ -1,9 +1,14 @@
-import React from 'react'
 
-export default function page() {
+
+import React from 'react'
+import Gamified from '../Game/Gamified'
+import Cursor from '../component/Cursor'
+
+export default function page () {
   return (
-    <div className='bg-white h-full w-full text-black'>
-        
+    <div className='bg-purple-300 h-screen w-full text-black'>
+        <Cursor/>
+        <Gamified/>
     </div>
   )
 }
