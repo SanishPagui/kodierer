@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 export const Navbar = () => {
   return (
-    <div className='fixed w-full h-24 flex items-center justify-between px-8 bg-green-800 shadow-xl z-[999]'>
+    <div className='fixed w-full h-24 flex items-center justify-between px-8 bg-zinc-600 shadow-xl z-[999] drop-shadow-xl'>
         <div>
             <Link href={'/'}>
-                <h1 className=" text-4xl font-semibold text-white transition-colors">
+                <h1 className="view text-4xl font-semibold text-white transition-colors">
                     Me & My Homies Hate Cups
                 </h1>
             </Link>

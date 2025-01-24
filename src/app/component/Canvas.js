@@ -14,26 +14,35 @@ export const Canvas = () => {
 
             // Mousemove animation with GSAP
             window.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * (Math.PI * 0.1);
-                const y = (e.clientY / window.innerHeight - 0.5) * (Math.PI * 0.1);  // Invert Y movement
+                // const x = (e.clientX / window.innerWidth - 0.5) * (Math.PI * 0.1);
+                // const y = (e.clientY / window.innerHeight - 0.5) * (Math.PI * 0.1);  
 
+                // gsap.to(scene.rotation, {
+                //     x: THREE.MathUtils.clamp(y, -Math.PI / 6, Math.PI / 6), // Limit rotation on X-axis
+                //     y: THREE.MathUtils.clamp(x, -Math.PI / 6, Math.PI / 6), // Limit rotation on Y-axis
+                //     duration: 0.5,
+                //     ease: "power2.out"
+                // });
+                const x = (e.clientX / window.innerWidth - 0.5) * (Math.PI * 0.3);
+                const y = (e.clientY / window.innerHeight - 0.5) * (Math.PI * 0.3);
+            
                 gsap.to(scene.rotation, {
-                    x: THREE.MathUtils.clamp(y, -Math.PI / 6, Math.PI / 6), // Limit rotation on X-axis
-                    y: THREE.MathUtils.clamp(x, -Math.PI / 6, Math.PI / 6), // Limit rotation on Y-axis
+                    x: y,
+                    y: x,
                     duration: 0.5,
                     ease: "power2.out"
                 });
             });
 
             // Set up camera
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
             camera.position.set(0, 0, 100);
 
             if (mountRef.current) {
                 const renderer = new THREE.WebGLRenderer({
                     canvas: mountRef.current,
                     antialias: true,
-                    alpha: true
+                    alpha: true // Allows transparency
                 });
                 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
                 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -52,6 +61,14 @@ export const Canvas = () => {
                     const size = bbox.getSize(new THREE.Vector3()).length();
                     const scaleFactor = 100 / size;
                     model.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+                    // Make the model transparent
+                    // model.traverse((object) => {
+                    //     if (object.isMesh) {
+                    //         object.material.transparent = true; // Enable transparency
+                    //         object.material.opacity = 0.5;     // Set transparency level (0 = fully transparent, 1 = fully opaque)
+                    //     }
+                    // });
 
                     scene.add(model);
 
@@ -74,6 +91,7 @@ export const Canvas = () => {
                     texture.dispose();
                     pmremGenerator.dispose();
                 });
+                
 
                 // Handle window resize
                 const handleResize = () => {
