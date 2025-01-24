@@ -10,7 +10,6 @@ export default function page() {
         <Canvas />
       </div>
       <div className='border-t-2 z-10 fixed justify-center text-center w-full h-screen flex flex-col items-center '>
-        <h1 className='text-9xl font-bold'>Waste Trees, Save Cup</h1>
       </div>
     </div>
   )
