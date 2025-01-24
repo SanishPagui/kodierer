@@ -55,7 +55,7 @@ const GameSelection = () => {
   const router = useRouter();
 
   const handleEventSelect = (eventId) => {
-    router.push(`/events/${eventId}`);
+    router.push(`/EventGame/${eventId}`);
   };
 
   return (
