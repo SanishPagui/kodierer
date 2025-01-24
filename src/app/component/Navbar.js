@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const Navbar = () => {
   return (
-    <div className='fixed w-full h-24 flex items-center justify-between px-8 bg-green-800 shadow-xl z-[999]'>
+    <div className='fixed w-full h-20 flex items-center justify-between px-8 bg-green-800 shadow-xl z-[999]'>
         <div>
             <Link href={'/'}>
                 <h1 className=" text-4xl font-semibold text-white transition-colors">
@@ -13,7 +13,12 @@ export const Navbar = () => {
         </div>
         <div>
             <ul className='flex space-x-6 text-lg'>
-            <Link href={'/Analysis'}>
+                <Link href={'/EventGame'}>
+                    <li className='text-white  transition-all'>
+                        Events
+                    </li>
+                </Link>
+                <Link href={'/Analysis'}>
                     <li className='text-white  transition-all'>
                         Analysis
                     </li>
