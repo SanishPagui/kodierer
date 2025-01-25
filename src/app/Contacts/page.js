@@ -32,23 +32,23 @@ const Developers = [
     {
         name: "Sanish Pagui",
         description: "---------------------------",
-        email: "SanishEmail@gmail.com",
+        email: "sanishpagui162@gmail.com",
         phone: "9518548760",
-        website: "https://www.sanish.com/"
+        website: "https://www.linkedin.com/in/sanish-pagui-529789307/"
     },
     {
         name: "Jai Gauns Dessai",
         description: "---------------------------",
-        email: "JaiEmail@gmail.com",
+        email: "Jaistudymail13@gmail.com",
         phone: "8975038986",
-        website: "https://www.jai.com/"
+        website: "https://www.linkedin.com/in/jaigd/"
     },
     {
         name: "Conrad Alves",
         description: "---------------------------",
-        email: "ConradEmail@gmail.com",
+        email: "cleophus775@gmail.com",
         phone: "8275677785",
-        website: "https://www.conrad.com/"
+        website: "https://www.linkedin.com/in/conrad-alves-906840288/"
     }
   ];
 
