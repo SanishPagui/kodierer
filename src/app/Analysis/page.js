@@ -20,7 +20,11 @@ const PaperCupAnalysis = () => {
     { month: 'Nov', cupsSaved: 1590, carbonSaved: 169.2 },
     { month: 'Dec', cupsSaved: 1630, carbonSaved: 180.7 }
   ]);
-  
+
+  // Calculate the month with the most cups saved
+  const maxCupsSaved = analysisData.reduce((max, entry) => (entry.cupsSaved > max.cupsSaved ? entry : max), analysisData[0]);
+  const minCarbonEmission = analysisData.reduce((min, entry) => (entry.carbonSaved < min.carbonSaved ? entry : min), analysisData[0]);
+
   const calculatedMetrics = {
     totalCupsSaved: analysisData.reduce((sum, entry) => sum + entry.cupsSaved, 0),
     carbonReduction: analysisData.reduce((sum, entry) => sum + entry.carbonSaved, 0).toFixed(2),
@@ -31,8 +35,7 @@ const PaperCupAnalysis = () => {
     <div className="w-full">
       <Cursor />
       <Navbar />
-      <div className=' max-w-5xl flex items-center justify-center flex-col h-screen'>
-        
+      <div className='w-full flex items-center pt-40 flex-col h-screen'>
         <h2 className="text-2xl font-bold mb-4 pt-20 pl-8 text-green-700">Campus Paper Cup Reduction Analysis</h2>
         <div className="grid grid-cols-3 gap-4 mb-6 pl-8">
           <div className="bg-blue-50 p-4 rounded shadow-lg">
@@ -48,15 +51,38 @@ const PaperCupAnalysis = () => {
             <p className="text-2xl font-bold">{calculatedMetrics.progressPercentage}%</p>
           </div>
         </div>
-        <LineChart width={600} height={300} data={analysisData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="cupsSaved" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="carbonSaved" stroke="#82ca9d" />
-        </LineChart>
+        <div className="flex w-full">
+          {/* Line Chart */}
+          <div className='w-1/2 flex justify-end pr-9'>
+            <LineChart width={600} height={300} data={analysisData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="cupsSaved" stroke="#8884d8" activeDot={{ r: 8 }} />
+              <Line type="monotone" dataKey="carbonSaved" stroke="#82ca9d" />
+            </LineChart>
+          </div>
+
+          {/* Paragraph to the Right */}
+          <div className="max-w-lg text-lg text-gray-700 pl-7">
+            <h3 className="text-xl font-bold text-green-700 mb-2">Graph Analysis</h3>
+            <p>
+              The graph visualizes the monthly progress of paper cup reduction and corresponding carbon emission reductions. 
+              The blue line represents the number of paper cups saved each month, while the green line indicates the carbon footprint reduction in kilograms. 
+              The data is cumulative, showing an increasing trend over the months, with notable peaks during specific months due to higher efforts or campaigns.
+              <br /><br />
+            </p>
+            <ul className="list-disc pl-5">
+              <li><strong>Most Cups Saved:</strong> {maxCupsSaved.month} with {maxCupsSaved.cupsSaved} cups saved.</li>
+              <li><strong>Least Carbon Emission:</strong> {minCarbonEmission.month} with {minCarbonEmission.carbonSaved} kg.</li>
+            </ul>
+            <p>
+              This highlights the months where efforts were most and least impactful, emphasizing the importance of consistent initiatives.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
