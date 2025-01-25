@@ -33,21 +33,21 @@ const Developers = [
         name: "Sanish Pagui",
         description: "---------------------------",
         email: "SanishEmail@gmail.com",
-        phone: "9999999991",
+        phone: "9518548760",
         website: "https://www.sanish.com/"
     },
     {
         name: "Jai Gauns Dessai",
         description: "---------------------------",
         email: "JaiEmail@gmail.com",
-        phone: "9999999992",
+        phone: "8975038986",
         website: "https://www.jai.com/"
     },
     {
         name: "Conrad Alves",
         description: "---------------------------",
         email: "ConradEmail@gmail.com",
-        phone: "9999999993",
+        phone: "8275677785",
         website: "https://www.conrad.com/"
     }
   ];
