@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Cursor from '../component/Cursor';
+import { Navbar } from '../component/Navbar';
 
 const CodeRedemption = () => {
   const [code, setCode] = useState('');
@@ -53,12 +55,6 @@ const CodeRedemption = () => {
             points: 500
           },
           { 
-            id: 2, 
-            name: 'Carbon Offset Credits', 
-            description: 'Neutralize your carbon footprint',
-            points: 750
-          },
-          { 
             id: 3, 
             name: 'Tree Planting Certificate', 
             description: 'Plant 10 trees in your name',
@@ -97,7 +93,8 @@ const CodeRedemption = () => {
 
   return (
     <div className="min-h-screen bg-green-50 flex flex-col">
-      
+      <Navbar/>
+      <Cursor/>
       <div className="flex-grow flex items-center justify-center p-4">
         <div className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-8">
           <h2 className="text-4xl font-bold mb-8 text-center text-green-800">Reward Redemption</h2>

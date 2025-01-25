@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-
+import Cursor from '../component/Cursor';
+import { Navbar } from '../component/Navbar';
 
 const fetchQuestions = async () => {
   return [
@@ -307,6 +308,8 @@ const EnergySavingGame = () => {
 
    return (
      <div className="min-h-screen bg-yellow-50 flex flex-col">
+      <Navbar />
+      <Cursor />
        <div className="flex-grow flex items-center justify-center p-4">
          <div className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-8">
            <h2 className="text-4xl font-bold mb-8 text-center text-yellow-800">⚡ Energy Saving Challenge Game! 🌍</h2>
