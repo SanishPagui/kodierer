@@ -15,7 +15,12 @@ export const Navbar = () => {
             </Link>
         </div>
         <div>
-            <ul className='flex space-x-6 text-lg'>
+            <ul className='flex space-x-8 text-2xl'>
+            <Link href={'/'}>
+                    <li className='text-blue-600  transition-all'>
+                        Home
+                    </li>
+                </Link>
                 <Link href={'/EventGame'}>
                     <li className='text-blue-600  transition-all'>
                         Events

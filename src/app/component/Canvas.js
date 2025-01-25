@@ -16,29 +16,29 @@ export default function Canvas () {
 
             // Mousemove animation with GSAP
             window.addEventListener('mousemove', (e) => {
-                // const x = (e.clientX / window.innerWidth - 0.5) * (Math.PI * 0.1);
-                // const y = (e.clientY / window.innerHeight - 0.5) * (Math.PI * 0.1);  
+                const x = (e.clientX / window.innerWidth - 0.5) * (Math.PI * 0.1);
+                const y = (e.clientY / window.innerHeight - 0.5) * (Math.PI * 0.1);  
 
-                // gsap.to(scene.rotation, {
-                //     x: THREE.MathUtils.clamp(y, -Math.PI / 6, Math.PI / 6), // Limit rotation on X-axis
-                //     y: THREE.MathUtils.clamp(x, -Math.PI / 6, Math.PI / 6), // Limit rotation on Y-axis
-                //     duration: 0.5,
-                //     ease: "power2.out"
-                // });
-                const x = (e.clientX / window.innerWidth - 0.5) * (Math.PI * 0.3);
-                const y = (e.clientY / window.innerHeight - 0.5) * (Math.PI * 0.3);
-            
                 gsap.to(scene.rotation, {
-                    x: y,
-                    y: x,
+                    x: THREE.MathUtils.clamp(y, -Math.PI / 6, Math.PI / 6), // Limit rotation on X-axis
+                    y: THREE.MathUtils.clamp(x, -Math.PI / 6, Math.PI / 6), // Limit rotation on Y-axis
                     duration: 0.5,
                     ease: "power2.out"
                 });
+                // const x = (e.clientX / window.innerWidth - 0.5) * (Math.PI * 0.3);
+                // const y = (e.clientY / window.innerHeight - 0.5) * (Math.PI * 0.3);
+            
+                // gsap.to(scene.rotation, {
+                //     x: y,
+                //     y: x,
+                //     duration: 0.5,
+                //     ease: "power2.out"
+                // });
             });
 
             // Set up camera
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(60, 20, 80);
+            camera.position.set(50, 0, 80);
 
             if (mountRef.current) {
                 const renderer = new THREE.WebGLRenderer({
