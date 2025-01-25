@@ -38,7 +38,7 @@ export default function Page() {
             participate in awareness campaigns, and encourage your peers to make a difference!
           </p>
           <Link
-            href="#get-involved"
+            href="https://community-puce-eta.vercel.app/"
             className="inline-block bg-green-600 text-white px-6 py-3 text-lg rounded-lg hover:bg-green-700 transition duration-300"
           >
             Get Involved

@@ -36,7 +36,7 @@ export default function Canvas () {
                 // });
             });
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(0, 0, 100);
+            camera.position.set(80, 0, 100);
 
             if (mountRef.current) {
                 const renderer = new THREE.WebGLRenderer({

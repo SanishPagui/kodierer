@@ -10,7 +10,7 @@ export const Navbar = () => {
         <div className='text-blue-900'>
             <Link href={'/'}>
                 <h1 className="view text-4xl font-semibold transition-colors">
-                    Me & My Homies Hate Cups
+                    CupConscious
                 </h1>
             </Link>
         </div>
