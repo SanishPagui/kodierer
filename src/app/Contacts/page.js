@@ -29,37 +29,55 @@ const EnvironmentalGroups = [
 ];
 
 const Developers = [
-    {
-        name: "Sanish Pagui",
-        description: "---------------------------",
-        email: "sanishpagui162@gmail.com",
-        phone: "9518548760",
-        website: "https://www.linkedin.com/in/sanish-pagui-529789307/"
-    },
-    {
-        name: "Jai Gauns Dessai",
-        description: "---------------------------",
-        email: "Jaistudymail13@gmail.com",
-        phone: "8975038986",
-        website: "https://www.linkedin.com/in/jaigd/"
-    },
-    {
-        name: "Conrad Alves",
-        description: "---------------------------",
-        email: "cleophus775@gmail.com",
-        phone: "8275677785",
-        website: "https://www.linkedin.com/in/conrad-alves-906840288/"
-    }
-  ];
+  {
+    name: "Sanish Pagui",
+    description: "---------------------------",
+    email: "sanishpagui162@gmail.com",
+    phone: "9518548760",
+    website: "https://www.linkedin.com/in/sanish-pagui-529789307/"
+  },
+  {
+    name: "Jai Gauns Dessai",
+    description: "---------------------------",
+    email: "Jaistudymail13@gmail.com",
+    phone: "8975038986",
+    website: "https://www.linkedin.com/in/jaigd/"
+  },
+  {
+    name: "Conrad Alves",
+    description: "---------------------------",
+    email: "cleophus775@gmail.com",
+    phone: "8275677785",
+    website: "https://www.linkedin.com/in/conrad-alves-906840288/"
+  }
+];
 
 export default function ContactPage() {
   const [selectedGroup, setSelectedGroup] = useState(null);
+  const [cursorLocked, setCursorLocked] = useState(false);
+
+  const handleSelectGroup = (group) => {
+    setSelectedGroup(group);
+    setCursorLocked(true);  // Lock cursor
+  };
+
+  const handleCloseModal = () => {
+    setSelectedGroup(null);
+    setCursorLocked(false);  // Unlock cursor
+  };
+
+  // Close the modal if the user clicks outside of it
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      handleCloseModal();
+    }
+  };
 
   return (
-    <div className='bg-white min-h-screen w-full'>
+    <div className={`bg-white min-h-screen w-full ${cursorLocked ? 'cursor-none' : ''}`}>
       <Navbar />
       <Cursor />
-      <div className='container mx-auto px-4 py-24'>
+      <div className='container mx-auto px-4 py-24 pt-32'>
         <h1 className='text-4xl font-bold text-green-700 mb-8 text-center'>
           Environmental Action Networks
         </h1>
@@ -69,7 +87,7 @@ export default function ContactPage() {
             <div 
               key={group.name} 
               className='bg-green-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all'
-              onClick={() => setSelectedGroup(group)}
+              onClick={() => handleSelectGroup(group)}
             >
               <h2 className='text-2xl font-semibold text-green-800 mb-4'>{group.name}</h2>
               <p className='text-gray-600 mb-4'>{group.description}</p>
@@ -90,7 +108,7 @@ export default function ContactPage() {
             <div 
               key={group.name} 
               className='bg-green-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all'
-              onClick={() => setSelectedGroup(group)}
+              onClick={() => handleSelectGroup(group)}
             >
               <h2 className='text-2xl font-semibold text-green-800 mb-4'>{group.name}</h2>
               <p className='text-gray-600 mb-4'>{group.description}</p>
@@ -103,7 +121,10 @@ export default function ContactPage() {
         </div>
 
         {selectedGroup && (
-          <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'>
+          <div 
+            className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'
+            onClick={handleOverlayClick} // Click on the overlay to close the modal
+          >
             <div className='bg-white p-8 rounded-lg max-w-md w-full'>
               <h2 className='text-3xl font-bold text-green-800 mb-4'>{selectedGroup.name}</h2>
               <div className='space-y-4'>
@@ -128,7 +149,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <button 
-                onClick={() => setSelectedGroup(null)}
+                onClick={handleCloseModal}
                 className='mt-6 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors'
               >
                 Close

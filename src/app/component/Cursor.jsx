@@ -9,10 +9,24 @@ const Cursor = () => {
         const cursorText = document.querySelector('.custom-text');
         const links = document.querySelectorAll('a');
 
+        // Function to update cursor position
         const onMouseMove = (event) => {
             const { clientX, clientY } = event;
             gsap.to(cursor, { x: clientX, y: clientY });
+
+            // Store the current mouse position in local storage
+            localStorage.setItem('mouseX', clientX);
+            localStorage.setItem('mouseY', clientY);
         };
+
+        // Restore cursor position on page load
+        const savedX = localStorage.getItem('mouseX');
+        const savedY = localStorage.getItem('mouseY');
+        if (savedX && savedY) {
+            gsap.set(cursor, { x: savedX, y: savedY });
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
 
         const onMouseEnterLink = (event) => {
             const link = event.target;
@@ -28,8 +42,6 @@ const Cursor = () => {
             gsap.to(cursor, { scale: 1 });
             cursorText.style.display = 'none';
         };
-
-        document.addEventListener('mousemove', onMouseMove);
 
         links.forEach((link) => {
             link.addEventListener('mouseenter', onMouseEnterLink);

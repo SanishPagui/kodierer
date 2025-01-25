@@ -58,17 +58,6 @@ export default function Canvas () {
                     model.position.set(-center.x, -center.y, -center.z);
 
                     // Scale the model to fit within view
-                    const size = bbox.getSize(new THREE.Vector3()).length();
-                    const scaleFactor = 100 / size;
-                    model.scale.set(scaleFactor, scaleFactor, scaleFactor);
-
-                    // Make the model transparent
-                    // model.traverse((object) => {
-                    //     if (object.isMesh) {
-                    //         object.material.transparent = true; // Enable transparency
-                    //         object.material.opacity = 0.5;     // Set transparency level (0 = fully transparent, 1 = fully opaque)
-                    //     }
-                    // });
 
                     scene.add(model);
 
