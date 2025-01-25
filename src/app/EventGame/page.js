@@ -12,7 +12,7 @@ const EVENTS = [
     title: 'Sustainability Marathon',
     description: 'Run for a greener planet',
     icon: '🏃‍♀️',
-    rewards: ['Water Bottle', 'Eco Credits']
+    rewards: ['Water Bottle', 'Tree Planting Certificate']
   },
   {
     id: 'recycling-challenge',
@@ -31,23 +31,9 @@ const EVENTS = [
   {
     id: 'hit-the-cup',
     title: 'Hit The Cup',
-    description: 'Reduces nothing',
+    description: 'Test your aim by throwing objects into cups from various distances. Challenge friends and improve your precision!',
     icon: '🥤',
-    rewards: ['no', 'nope']
-  },
-  {
-    id: 'game-2',
-    title: 'Useless it is',
-    description: 'Reduces nothing',
-    icon: '❌',
-    rewards: ['no', 'nope']
-  },
-  {
-    id: 'some-event',
-    title: 'Useless it is',
-    description: 'Reduces nothing',
-    icon: '❌',
-    rewards: ['no', 'nope']
+    rewards: ['Campus Recycling Points', 'Sustainable Swag Bag']
   }
 ];
 
@@ -55,7 +41,7 @@ const GameSelection = () => {
   const router = useRouter();
 
   const handleEventSelect = (eventId) => {
-    router.push(`/EventGame/${eventId}`);
+    router.push(`/${eventId}`);
   };
 
   return (
