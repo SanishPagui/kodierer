@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Canvas from '../component/Canvas';
-import Link from 'next/link';
 
 export default function Page() {
   return (
