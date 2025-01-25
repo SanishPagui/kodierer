@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import Cursor from '../component/Cursor';
 import { Navbar } from '../component/Navbar';
 import Link from 'next/link';
@@ -45,17 +46,38 @@ const GameSelection = () => {
   };
 
   return (
-    <div className='w-full h-screen'>
+    <motion.div 
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.5, ease: 'easeOut' }}
+      className='w-full h-screen'
+    >
       <Navbar />
       <Cursor />
       <div className="container mx-auto p-4 h-screen">
-        <h1 className="text-3xl font-bold pt-24 mb-6 text-green-700 text-center">
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: 'easeOut', delay: 0.2 }}
+          className="text-3xl font-bold pt-24 mb-6 text-green-700 text-center"
+        >
           Sustainability Games & Events
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 place-items-center">
+        </motion.h1>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: 'easeOut', delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 place-items-center"
+        >
           {EVENTS.map((event, index) => {
             const content = (
-              <div className="bg-green-50 p-4 rounded-lg shadow-md cursor-pointer hover:bg-amber-50 transition w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: 'easeOut', delay: 0.6 + index * 0.2 }}
+                className="bg-green-50 p-4 rounded-lg shadow-md cursor-pointer hover:bg-amber-50 transition w-full"
+              >
                 <div className="text-4xl mb-2 text-center">{event.icon}</div>
                 <h2 className="text-xl font-semibold text-center">{event.title}</h2>
                 <p className="text-gray-600 text-center">{event.description}</p>
@@ -67,11 +89,17 @@ const GameSelection = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             );
 
             return (
-              <div key={event.id} className="w-full flex justify-center">
+              <motion.div 
+                key={event.id}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.5, ease: 'easeOut', delay: 0.8 + index * 0.2 }}
+                className="w-full flex justify-center"
+              >
                 {index >= 3 && index <= 5 ? (
                   <Link href={`/Game`} className="block w-full">
                     {content}
@@ -81,12 +109,12 @@ const GameSelection = () => {
                     {content}
                   </button>
                 )}
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Navbar } from '../component/Navbar';
 import { Mail, Phone, Globe } from 'lucide-react';
 import Cursor from '../component/Cursor';
+import { motion } from 'framer-motion'; // Importing Framer Motion
 
 const EnvironmentalGroups = [
   {
@@ -78,16 +79,29 @@ export default function ContactPage() {
       <Navbar />
       <Cursor />
       <div className='container mx-auto px-4 py-24 pt-32'>
-        <h1 className='text-4xl font-bold text-green-700 mb-8 text-center'>
+        {/* Animate the main heading */}
+        <motion.h1 
+          className='text-4xl font-bold text-green-700 mb-8 text-center'
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+        >
           Environmental Action Networks
-        </h1>
+        </motion.h1>
         
-        <div className='grid md:grid-cols-3 gap-6'>
+        <motion.div
+          className='grid md:grid-cols-3 gap-6'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
+        >
           {EnvironmentalGroups.map((group) => (
-            <div 
+            <motion.div 
               key={group.name} 
               className='bg-green-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all'
               onClick={() => handleSelectGroup(group)}
+              whileHover={{ scale: 1.05 }} // Scale effect on hover
+              transition={{ duration: 0.2 }}
             >
               <h2 className='text-2xl font-semibold text-green-800 mb-4'>{group.name}</h2>
               <p className='text-gray-600 mb-4'>{group.description}</p>
@@ -95,20 +109,33 @@ export default function ContactPage() {
                 <Mail className='mr-2 text-green-600' size={20}/>
                 <span>{group.email}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <h1 className='text-4xl font-bold text-green-700 py-8 mb-8 text-center'>
+        {/* Animate the developers heading */}
+        <motion.h1 
+          className='text-4xl font-bold text-green-700 py-8 mb-8 text-center'
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
+        >
           Developers
-        </h1>
+        </motion.h1>
 
-        <div className='grid md:grid-cols-3 gap-6'>
+        <motion.div
+          className='grid md:grid-cols-3 gap-6'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, ease: 'easeOut', delay: 0.2 }}
+        >
           {Developers.map((group) => (
-            <div 
+            <motion.div 
               key={group.name} 
               className='bg-green-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-all'
               onClick={() => handleSelectGroup(group)}
+              whileHover={{ scale: 1.05 }} // Scale effect on hover
+              transition={{ duration: 0.2 }}
             >
               <h2 className='text-2xl font-semibold text-green-800 mb-4'>{group.name}</h2>
               <p className='text-gray-600 mb-4'>{group.description}</p>
@@ -116,16 +143,24 @@ export default function ContactPage() {
                 <Mail className='mr-2 text-green-600' size={20}/>
                 <span>{group.email}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {selectedGroup && (
-          <div 
+          <motion.div 
             className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'
             onClick={handleOverlayClick} // Click on the overlay to close the modal
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className='bg-white p-8 rounded-lg max-w-md w-full'>
+            <motion.div 
+              className='bg-white p-8 rounded-lg max-w-md w-full'
+              initial={{ y: -50 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <h2 className='text-3xl font-bold text-green-800 mb-4'>{selectedGroup.name}</h2>
               <div className='space-y-4'>
                 <div className='flex items-center'>
@@ -148,14 +183,15 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-              <button 
+              <motion.button 
                 onClick={handleCloseModal}
                 className='mt-6 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors'
+                whileHover={{ scale: 1.05 }} // Button hover effect
               >
                 Close
-              </button>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
         )}
       </div>
     </div>
