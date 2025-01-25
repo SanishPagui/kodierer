@@ -38,7 +38,7 @@ export default function Canvas () {
 
             // Set up camera
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.set(50, 0, 80);
+            camera.position.set(0, 0, 100);
 
             if (mountRef.current) {
                 const renderer = new THREE.WebGLRenderer({
