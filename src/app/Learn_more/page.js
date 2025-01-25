@@ -1,10 +1,15 @@
 import React from 'react';
+import Cursor from '../component/Cursor';
+import { Navbar } from '../component/Navbar';
 
 export default function Page() {
   return (
-    <div className="bg-gray-50 text-gray-900">
+    
+    <div className="bg-gray-50 text-gray-900 border-t-2">
+      <Cursor/>
+      <Navbar/>
       {/* Header */}
-      <header className="bg-green-700 text-white text-center py-12">
+      <header className="bg-green-700 text-white text-center py-12 mt-24">
         <h1 className="text-4xl font-bold mb-4">Learn More About Our Paper Cup Reduction Initiative</h1>
         <p className="text-xl max-w-3xl mx-auto">
           Join us in reducing the environmental impact of single-use paper cups. Together, we can make a meaningful
